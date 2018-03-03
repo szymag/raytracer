@@ -13,7 +13,7 @@ def pixel_coordinate(matrix_placement):
 
 def vector_to_object(pixel):
     assert matrix_size[0] % 2 != 0 and matrix_size[1] %2 != 0
-    return [geometry.Point3D((1, *pixel_coordinate(pixel))), camera_placement]
+    return np.array(1, *pixel_coordinate(pixel))
 
 
 def vectors_through_matrix():
