@@ -1,6 +1,8 @@
 from sympy import geometry
 import numpy as np
 from sphere import Sphere
+import collections
+
 
 camera_placement = geometry.Point3D(0, 0, 0)
 matrix_size = (15, 11)
@@ -16,12 +18,20 @@ def vector_to_object(pixel):
     return np.array((1, *pixel_coordinate(pixel)))
 
 
-def vectors_through_matrix():
-    sphere = Sphere((5, 0, 0), 4.5)
+def luminescence_from_objects(objects):
+    luminescence_matrix = np.zeros(matrix_size)
+    assert isinstance(objects, collections.Iterable)
+    for i in objects:
+        luminescence_matrix = np.maximum(vectors_through_matrix(i), luminescence_matrix)
+    return luminescence_matrix
+
+
+def vectors_through_matrix(object):
+    assert isinstance(object, Sphere) # Update for other type of objects
     luminescence_matrix = np.zeros(matrix_size)
     for i in range(matrix_size[0]):
         for j in range(matrix_size[1]):
-            luminescence_matrix[i, j] = sphere.lightness(vector_to_object((i, j)))
+            luminescence_matrix[i, j] = object.lightness(vector_to_object((i, j)))
     return luminescence_matrix
 
 
