@@ -5,7 +5,7 @@ import collections
 
 
 camera_placement = geometry.Point3D(0, 0, 0)
-matrix_size = (15, 11)
+matrix_size = (151, 151)
 
 
 def pixel_coordinate(matrix_placement):
@@ -15,7 +15,7 @@ def pixel_coordinate(matrix_placement):
 
 def vector_to_object(pixel):
     assert matrix_size[0] % 2 != 0 and matrix_size[1] % 2 != 0
-    return np.array((1, *pixel_coordinate(pixel)))
+    return np.array((100.0, *pixel_coordinate(pixel)))
 
 
 def luminescence_from_objects(objects):
