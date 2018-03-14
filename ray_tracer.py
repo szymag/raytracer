@@ -3,14 +3,13 @@ import numpy as np
 from sphere import Sphere
 import collections
 
-
 camera_placement = geometry.Point3D(0, 0, 0)
 matrix_size = (151, 151)
-
+light_position = np.array([0, 0, 0])
 
 def pixel_coordinate(matrix_placement):
-    return matrix_placement[0] - matrix_size[0]//2, \
-           matrix_placement[1] - matrix_size[1]//2
+    return matrix_placement[0] - matrix_size[0] // 2, \
+           matrix_placement[1] - matrix_size[1] // 2
 
 
 def vector_to_object(pixel):
@@ -27,11 +26,11 @@ def luminescence_from_objects(objects):
 
 
 def vectors_through_matrix(object):
-    assert isinstance(object, Sphere) # Update for other type of objects
+    assert isinstance(object, Sphere)  # Update for other type of objects
     luminescence_matrix = np.zeros(matrix_size)
     for i in range(matrix_size[0]):
         for j in range(matrix_size[1]):
-            luminescence_matrix[i, j] = object.lightness(vector_to_object((i, j)))
+            luminescence_matrix[i, j] = object.lightness(vector_to_object((i, j)), light_position)
     return luminescence_matrix
 
 
