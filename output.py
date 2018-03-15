@@ -28,8 +28,8 @@ def to_pgm(luminescence_matrix, max_value=255):
 
 
 if __name__ == '__main__':
-    data = to_pbm(ray_tracer.luminescence_from_objects(
-            [Sphere([300, -30, 10], 20),
-             Sphere([250, 15, -10], 30)]))
-    with open("image.pbm", 'w') as f:
+    data = to_pgm(ray_tracer.luminescence_from_objects(
+            [Sphere([300, 50, 50], 100),
+             Sphere([250, -50, -50], 50)]))
+    with open("image.pgm", 'w') as f:
         f.write(data)
