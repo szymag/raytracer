@@ -1,2 +1,3 @@
 **/*.rs.bk
 /__pycache__
+*.ppm
