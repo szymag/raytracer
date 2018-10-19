@@ -90,6 +90,9 @@ class Vec3D:
     def squared_length(self):
         return self.e0**2 + self.e1**2 + self.e2**2
 
+    def unit_vector(self):
+        return self / self.length()
+
 if __name__ == '__main__':
     v1 = Vec3D(1,2,3)
     v2 = Vec3D(1,2,3) * 3
@@ -106,3 +109,8 @@ if __name__ == '__main__':
     assert v1 @ v2 == 42
     v1 += v1
     assert v1 == Vec3D(2, 4, 6)
+    v3 = Vec3D(1, 0, 0)
+    assert v3 == Vec3D(1, 0, 0).unit_vector()
+    v4 = Vec3D(1, 1, 1)
+    v4.unit_vector()
+    assert v4 == Vec3D(1, 1, 1)
