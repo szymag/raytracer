@@ -1,6 +1,7 @@
 import numpy as np
 from math import sqrt
 
+
 class Sphere:
     def __init__(self, center, radius):
         self.center = np.array(center)
@@ -26,7 +27,7 @@ class Sphere:
         return np.dot(shade_vector, normal_vector)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     s = Sphere([5, 0, 0], 2)
     assert s.lightness(np.array([1, 0, 0]), np.array([0, 0, 0])) == 1.0
     assert s.lightness(np.array([0, 1, 0]), np.array([0, 0, 0])) == 0.0

@@ -8,10 +8,8 @@ class Vec3D:
         self.e2 = e2
 
     def __add__(self, other):
-        if isinstance(other,Vec3D):
-            return Vec3D(self.e0 + other.e0,
-                        self.e1 + other.e1,
-                        self.e2 + other.e2)
+        if isinstance(other, Vec3D):
+            return Vec3D(self.e0 + other.e0, self.e1 + other.e1, self.e2 + other.e2)
         else:
             raise NotImplementedError
 
@@ -20,9 +18,7 @@ class Vec3D:
 
     def __sub__(self, other):
         if isinstance(other, Vec3D):
-            return Vec3D(self.e0 - other.e0,
-                        self.e1 - other.e1,
-                        self.e2 - other.e2)
+            return Vec3D(self.e0 - other.e0, self.e1 - other.e1, self.e2 - other.e2)
         else:
             raise NotImplementedError
 
@@ -41,7 +37,7 @@ class Vec3D:
 
     def __mul__(self, scalar):
         if isinstance(scalar, (int, float)):
-        #TODO: is it enough?
+            # TODO: is it enough?
             return Vec3D(*(n * scalar for n in self.vector()))
         else:
             raise NotImplementedError
@@ -51,51 +47,58 @@ class Vec3D:
 
     def __truediv__(self, scalar):
         if isinstance(scalar, (int, float)):
-        #TODO: is it enough?
+            # TODO: is it enough?
             return Vec3D(*(n / scalar for n in self.vector()))
         else:
             raise NotImplementedError
 
     def __eq__(self, other):
-        return (all(a == b for a, b in zip(self.vector(), other.vector())))
+        return all(a == b for a, b in zip(self.vector(), other.vector()))
 
     @property
-    def x(self): return self.e0
+    def x(self):
+        return self.e0
 
     @property
-    def y(self): return self.e1
+    def y(self):
+        return self.e1
 
     @property
-    def z(self): return self.e2
+    def z(self):
+        return self.e2
 
     @property
-    def r(self): return self.e0
+    def r(self):
+        return self.e0
 
     @property
-    def g(self): return self.e1
+    def g(self):
+        return self.e1
 
     @property
-    def b(self): return self.e2
+    def b(self):
+        return self.e2
 
     def vector(self):
-        #TODO: find better way for returning components
+        # TODO: find better way for returning components
         return self.e0, self.e1, self.e2
 
     def dot(self, other):
         return sum(a * b for a, b in zip(self.vector(), other.vector()))
 
     def length(self):
-        return sqrt(self.e0**2 + self.e1**2 + self.e2**2)
+        return sqrt(self.e0 ** 2 + self.e1 ** 2 + self.e2 ** 2)
 
     def squared_length(self):
-        return self.e0**2 + self.e1**2 + self.e2**2
+        return self.e0 ** 2 + self.e1 ** 2 + self.e2 ** 2
 
     def unit_vector(self):
         return self / self.length()
 
-if __name__ == '__main__':
-    v1 = Vec3D(1,2,3)
-    v2 = Vec3D(1,2,3) * 3
+
+if __name__ == "__main__":
+    v1 = Vec3D(1, 2, 3)
+    v2 = Vec3D(1, 2, 3) * 3
     assert v1.x == v1.r
     assert v1.y == v1.g
     assert v1.z == v1.b
