@@ -8,7 +8,7 @@ class Ray:
         else:
             raise TypeError("origin is a vec3d object")
         if isinstance(direction, Vec3D):
-            self.direciton = direction
+            self.direction = direction
         else:
             raise TypeError("origin is a vec3d object")
 
@@ -18,10 +18,10 @@ class Ray:
 
     @property
     def B(self):
-        return self.direciton
+        return self.direction
 
     def point_at_parameter(self, t):
-        return self.origin + self.direciton
+        return self.origin + self.direction*t
 
 
 if __name__ == "__main__":
