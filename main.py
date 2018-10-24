@@ -42,8 +42,9 @@ def first_render():
     horizontal = Vec3D(4, 0, 0)
     vertical = Vec3D(0, 2, 0)
     origin = Vec3D(0, 0, 0)
-    world = EntityList([Sphere(Vec3D(0, 0, -1), 0.5),
-                          Sphere(Vec3D(0, -100.5, -1), 100)])
+    world = EntityList(
+        [Sphere(Vec3D(0, 0, -1), 0.5), Sphere(Vec3D(0, -100.5, -1), 100)]
+    )
     for id, j in enumerate(reversed(range(ny))):
         for i in range(nx):
             u = i / nx
@@ -55,9 +56,7 @@ def first_render():
 
 def color(ray, world):
     if world.hit(ray, 0, 1e9):
-        return 0.5*Vec3D(world.record.normal.x + 1,
-                         world.record.normal.y + 1,
-                         world.record.normal.z + 1)
+        return 0.5 * (world.register_hit.normal + Vec3D(1, 1, 1))
     else:
         unit_direction = ray.direction.unit_vector()
         t = 0.5 * (unit_direction.y + 1.0)
